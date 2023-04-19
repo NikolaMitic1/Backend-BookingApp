@@ -13,7 +13,11 @@ const createHotel = async (req, res, next) => {
 
 const updateHotel = async (req, res, next) => {
     try {
-        const updateHotel = await Hotel.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
+        const updateHotel = await Hotel.findByIdAndUpdate(
+            req.params.id,
+            { $set: req.body },
+            { new: true }
+        )
         res.status(200).json(updateHotel)
     } catch (err) {
         res.status(500).json(err)
@@ -32,12 +36,12 @@ const deleteHotel = async (req, res, next) => {
 const getHotel = async (req, res, next) => {
     const hotel = await Hotel.findById(req.params.id)
 
-    if(!hotel){
+    if (!hotel) {
         res.status(500).json('Hotel dose not exist!')
     } else {
         res.status(200).json(hotel)
     }
-    
+
 }
 
 const getAllHotels = async (req, res, next) => {
